@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Ladeskab1
 {
-    interface IDoor
+    public interface IDoor
     {
 
-        void Lock();
-        void Unlock();
+        void LockDoor();
+        void UnlockDoor();
     }
 }

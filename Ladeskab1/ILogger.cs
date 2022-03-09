@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace Ladeskab1
 {
-    public interface IChargeControl
+    interface ILogger
     {
-        bool Connected { get; set; }
-
-        void StartCharge();
-        void StopCharge();
+        void log();
     }
 }

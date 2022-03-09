@@ -8,5 +8,14 @@ namespace Ladeskab1
 {
     class Door : IDoor
     {
+        public void LockDoor()
+        {
+
+        }
+
+        public void UnlockDoor()
+        {
+
+        }
     }
 }

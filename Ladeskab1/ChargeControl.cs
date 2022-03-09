@@ -8,5 +8,16 @@ namespace Ladeskab1
 {
     class ChargeControl : IChargeControl
     {
+        public bool Connected { get; set; }
+
+        public void StartCharge()
+        {
+
+        }
+
+        public void StopCharge()
+        {
+
+        }
     }
 }
