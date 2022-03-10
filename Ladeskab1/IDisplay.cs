@@ -8,5 +8,6 @@ namespace Ladeskab1
 {
     interface IDisplay
     {
+        void ShowMessage();
     }
 }
