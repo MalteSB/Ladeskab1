@@ -8,5 +8,7 @@ namespace Ladeskab1
 {
     interface IReader
     {
+
+        void OnRfidRead(int id);
     }
 }
