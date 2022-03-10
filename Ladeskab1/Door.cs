@@ -8,9 +8,12 @@ namespace Ladeskab1
 {
     class Door : IDoor
     {
-        public void LockDoor()
+        public event EventHandler<DoorEventArgs> DoorStateEvent;
+        private string oldState;
+        public void LockDoor(string newState)
         {
-
+            OnDoorClose(new DoorEventArgs(){state = newState});
+            oldState = newState;
         }
 
         public void UnlockDoor()
@@ -20,11 +23,12 @@ namespace Ladeskab1
 
         public void OnDoorOpen()
         {
-
+            throw new NotImplementedException();
         }
-        public void OnDoorClose()
-        {
 
+        public void OnDoorClose(DoorEventArgs e)
+        {
+            DoorStateEvent?.Invoke(this,e);
         }
     }
 }

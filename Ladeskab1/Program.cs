@@ -20,18 +20,22 @@ namespace Ladeskab1
 
                 switch (input[0])
                 {
+                    case 'e':
                     case 'E':
                         finish = true;
                         break;
 
+                    case 'o':
                     case 'O':
                         door.OnDoorOpen();
                         break;
 
+                    case 'c':
                     case 'C':
-                        door.OnDoorClose();
+                        door.OnDoorClose(new DoorEventArgs());
                         break;
 
+                    case 'r':
                     case 'R':
                         System.Console.WriteLine("Indtast RFID id: ");
                         string idString = System.Console.ReadLine();
