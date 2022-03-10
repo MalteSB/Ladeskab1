@@ -14,6 +14,8 @@ namespace Ladeskab1
                 string input;
                 System.Console.WriteLine("Indtast E, O, C, R: ");
                 input = Console.ReadLine();
+                IDoor door = new Door();
+                IReader rfidReader = new RFID();
                 if (string.IsNullOrEmpty(input)) continue;
 
                 switch (input[0])

@@ -31,5 +31,10 @@ namespace Ladeskab1
             }
             return 0;
         }
+
+        public void OnRfidRead(int id)
+        {
+
+        }
     }
 }

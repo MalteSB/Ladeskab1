@@ -17,5 +17,14 @@ namespace Ladeskab1
         {
 
         }
+
+        public void OnDoorOpen()
+        {
+
+        }
+        public void OnDoorClose()
+        {
+
+        }
     }
 }
