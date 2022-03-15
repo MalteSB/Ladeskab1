@@ -27,7 +27,7 @@ namespace Ladeskab1
 
                     case 'o':
                     case 'O':
-                        door.OnDoorOpen();
+                        door.OnDoorOpen(new DoorEventArgs());
                         break;
 
                     case 'c':
@@ -41,7 +41,7 @@ namespace Ladeskab1
                         string idString = System.Console.ReadLine();
 
                         int id = Convert.ToInt32(idString);
-                        rfidReader.OnRfidRead(id);
+                        rfidReader.OnRfidRead(new ReaderEventArgs());
                         break;
 
                     default:

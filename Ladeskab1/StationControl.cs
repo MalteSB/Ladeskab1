@@ -36,7 +36,7 @@ namespace Ladeskab1
                     // Check for ladeforbindelse
                     if (_charger.Connected)
                     {
-                        _door.LockDoor("locked");
+                        _door.LockDoor();
                         _charger.StartCharge();
                         _oldId = id;
                         using (var writer = File.AppendText(logFile))

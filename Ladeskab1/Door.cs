@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ladeskab1
 {
-    class Door : IDoor
+    public class Door : IDoor
     {
         public event EventHandler<DoorEventArgs> DoorStateEvent;
         private string thisRFID;
@@ -19,7 +19,7 @@ namespace Ladeskab1
 
         public void LockDoor()
         {
-            OnDoorClose(new DoorEventArgs(){code = "Unlocked"});
+            OnDoorClose(new DoorEventArgs(){code = "Locked"});
             thisRFID = "Locked";
         }
 
