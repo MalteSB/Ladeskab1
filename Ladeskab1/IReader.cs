@@ -8,7 +8,12 @@ namespace Ladeskab1
 {
     interface IReader
     {
+        void Read(int code);
+        void OnRfidRead(ReaderEventArgs e);
+    }
 
-        void OnRfidRead(int id);
+    public class ReaderEventArgs : EventArgs
+    {
+        public int rfidCode { get; set; }
     }
 }

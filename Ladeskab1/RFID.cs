@@ -8,10 +8,11 @@ namespace Ladeskab1
 {
     class RFID : IReader
     {
-        public string readString { get; private set; }
+        public event EventHandler<ReaderEventArgs> ReadStateEvent;
+        private string oldString;
         private bool continueBool = false;
 
-        public int Read(string code)
+        public void Read(int code)
         {
             while (continueBool == true)
             {
@@ -21,7 +22,8 @@ namespace Ladeskab1
                     switch (k)
                     {
                         case 'A': 
-                            return code.GetHashCode();
+                            OnRfidRead(new ReaderEventArgs(){rfidCode = code});
+                            
                             break;
                         case 'S':
                             continueBool = false;
@@ -29,12 +31,11 @@ namespace Ladeskab1
                     }
                 }
             }
-            return 0;
         }
 
-        public void OnRfidRead(int id)
+        public void OnRfidRead(ReaderEventArgs e)
         {
-
+            ReadStateEvent?.Invoke(this,e);
         }
     }
 }

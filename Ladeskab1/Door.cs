@@ -9,21 +9,29 @@ namespace Ladeskab1
     class Door : IDoor
     {
         public event EventHandler<DoorEventArgs> DoorStateEvent;
-        private string oldState;
-        public void LockDoor(string newState)
+        private string thisRFID;
+
+        public enum states 
         {
-            OnDoorClose(new DoorEventArgs(){state = newState});
-            oldState = newState;
+            Locked,
+            UnLocked
+        }
+
+        public void LockDoor()
+        {
+            OnDoorClose(new DoorEventArgs(){code = "Unlocked"});
+            thisRFID = "Locked";
         }
 
         public void UnlockDoor()
         {
-
+            OnDoorOpen(new DoorEventArgs() { code = "Unlocked" });
+            thisRFID = "Unlocked";
         }
 
-        public void OnDoorOpen()
+        public void OnDoorOpen(DoorEventArgs e)
         {
-            throw new NotImplementedException();
+            DoorStateEvent?.Invoke(this,e);
         }
 
         public void OnDoorClose(DoorEventArgs e)

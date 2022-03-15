@@ -9,15 +9,15 @@ namespace Ladeskab1
     public interface IDoor
     {
         event EventHandler<DoorEventArgs> DoorStateEvent;
-        void LockDoor(string newState);
+        void LockDoor();
         void UnlockDoor();
 
-        void OnDoorOpen();
+        void OnDoorOpen(DoorEventArgs e);
         void OnDoorClose(DoorEventArgs e);
     }
 
     public class DoorEventArgs : EventArgs
     {
-        public string state { get; set; }
+        public string code { get; set; }
     }
 }

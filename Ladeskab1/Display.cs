@@ -11,6 +11,11 @@ namespace Ladeskab1
         private bool doorOpened = false;
         private bool isConnected;
         private bool checkID;
+
+        public void SetLockerState()
+        {
+
+        }
         
         public void ShowMessage()
         {
