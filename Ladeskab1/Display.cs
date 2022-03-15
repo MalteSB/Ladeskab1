@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Ladeskab1
 {
-    class Display : IDisplay
+    public class Display : IDisplay
     {
+        public event EventHandler<DoorEventArgs> DisplayEvent;
         private bool doorOpened = false;
         private bool isConnected;
         private bool checkID;

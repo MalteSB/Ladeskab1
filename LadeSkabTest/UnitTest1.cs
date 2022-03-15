@@ -6,21 +6,32 @@ namespace LadeSkabTest
     public class Tests
     {
         private Door _uut;
+        private RFID reader;
         private DoorEventArgs _receivedDoorEventArgs;
+        private ReaderEventArgs _receivedReaderEventArgs;
 
         [SetUp]
         public void Setup()
         {
             _receivedDoorEventArgs = null;
+            _receivedReaderEventArgs = null;
 
             _uut = new Door();
-            _uut.LockDoor();
+
+            reader = new RFID();
+
 
             // Set up an event listener to check the event occurrence and event data
             _uut.DoorStateEvent+=
                 (o, args) =>
                 {
                     _receivedDoorEventArgs = args;
+                };
+
+            reader.ReadStateEvent +=
+                (o, args) =>
+                {
+                    _receivedReaderEventArgs = args;
                 };
         }
 
@@ -33,15 +44,17 @@ namespace LadeSkabTest
         }
 
         [Test]
-        public void TestObserverDisplay()
+        public void TestObserverReader()
         {
-
+            reader.Read(23);
+            
+            Assert.That(_receivedReaderEventArgs.rfidCode,Is.EqualTo(23));
         }
 
         [Test]
-        public void TestObserverReader()
+        public void TestObserverDisplay()
         {
-
+            //ikke implementeret
         }
     }
 }

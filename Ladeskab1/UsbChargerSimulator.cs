@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices.ComTypes;
 using System.Timers;
 
 namespace UsbSimulator
@@ -50,6 +51,7 @@ namespace UsbSimulator
                 else if (Connected && _overload)
                 {
                     CurrentValue = OverloadCurrent;
+
                 }
                 else if (!Connected)
                 {
