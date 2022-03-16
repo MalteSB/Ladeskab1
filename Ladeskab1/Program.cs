@@ -1,4 +1,5 @@
 ﻿using System;
+using UsbSimulator;
 
 namespace Ladeskab1
 {
@@ -7,6 +8,11 @@ namespace Ladeskab1
         static void Main(string[] args)
         {
             // Assemble your system here from all the classes
+            IDoor door = new Door();
+            IReader rfidReader = new RFID();
+            ChargeControl _chargeControl = new ChargeControl();
+            UsbChargerSimulator _usbSim = new UsbChargerSimulator();
+            StationControl _statControl = new StationControl(door, rfidReader, _chargeControl);
 
             bool finish = false;
             do
@@ -14,8 +20,6 @@ namespace Ladeskab1
                 string input;
                 System.Console.WriteLine("Indtast E, O, C, R: ");
                 input = Console.ReadLine();
-                IDoor door = new Door();
-                IReader rfidReader = new RFID();
                 if (string.IsNullOrEmpty(input)) continue;
 
                 switch (input[0])
@@ -39,9 +43,8 @@ namespace Ladeskab1
                     case 'R':
                         System.Console.WriteLine("Indtast RFID id: ");
                         string idString = System.Console.ReadLine();
-
                         int id = Convert.ToInt32(idString);
-                        rfidReader.OnRfidRead(new ReaderEventArgs());
+                        rfidReader.Read(id);
                         break;
 
                     default:

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Ladeskab1
 {
-    interface IReader
+    public interface IReader
     {
+        public event EventHandler<ReaderEventArgs> ReadStateEvent;
         void Read(int code);
         void OnRfidRead(ReaderEventArgs e);
     }

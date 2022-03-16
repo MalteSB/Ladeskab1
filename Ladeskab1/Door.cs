@@ -19,13 +19,13 @@ namespace Ladeskab1
 
         public void LockDoor()
         {
-            OnDoorClose(new DoorEventArgs(){code = "Locked"});
+            OnDoorClose(new DoorEventArgs(){code = 1});
             thisRFID = "Locked";
         }
 
         public void UnlockDoor()
         {
-            OnDoorOpen(new DoorEventArgs() { code = "Unlocked" });
+            OnDoorOpen(new DoorEventArgs() {code = 0});
             thisRFID = "Unlocked";
         }
 

@@ -35,20 +35,30 @@ namespace LadeSkabTest
                 };
         }
 
-        [Test]
-        public void TestObserverDoor()
+        [TestCase(1,1)]
+        [TestCase(2,0)]
+        public void TestObserverDoor(int scenario,int state)
         {
-            _uut.LockDoor();
+            if (scenario == 1)
+            {
+                _uut.LockDoor();
+            }
+            else if (scenario == 2)
+            {
+                _uut.UnlockDoor();
+            }
 
-            Assert.That(_receivedDoorEventArgs.code,Is.EqualTo("Locked"));
+            Assert.That(_receivedDoorEventArgs.code,Is.EqualTo(state));
         }
 
-        [Test]
-        public void TestObserverReader()
+        [TestCase(23)]
+        [TestCase(10)]
+        [TestCase(5)]
+        public void TestObserverReader(int code)
         {
-            reader.Read(23);
+            reader.Read(code);
             
-            Assert.That(_receivedReaderEventArgs.rfidCode,Is.EqualTo(23));
+            Assert.That(_receivedReaderEventArgs.rfidCode,Is.EqualTo(code));
         }
 
         [Test]

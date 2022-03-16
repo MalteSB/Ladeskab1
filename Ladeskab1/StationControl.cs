@@ -22,18 +22,45 @@ namespace Ladeskab1
         private IChargeControl _charger;
         private int _oldId;
         private IDoor _door;
+        private IReader _reader;
+        private int _currentString;
+        private int _currentRFIDcode;
 
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
         // Her mangler constructor
+        public StationControl(IDoor door, IReader reader,IChargeControl chargeControl)
+        {
+            _charger = chargeControl;
+            _door = door;
+            _reader = reader;
+            _door.DoorStateEvent += HandleDoorStateEvent;
+            _reader.ReadStateEvent += HandleRFIDStateEvent;
+            
+     
+        }
+
+        private void HandleDoorStateEvent(object sender, DoorEventArgs e)
+        {
+            _currentString = e.code;
+            DoorEventDetected(e.code);
+        }
+
+        private void HandleRFIDStateEvent(object sender, ReaderEventArgs e)
+        {
+            RfidDetected(e.rfidCode);
+        }
 
         // Eksempel på event handler for eventet "RFID Detected" fra tilstandsdiagrammet for klassen
         private void RfidDetected(int id)
         {
             switch (_state)
             {
+
                 case LadeskabState.Available:
                     // Check for ladeforbindelse
+                    _charger.Connected = true;
+
                     if (_charger.Connected)
                     {
                         _door.LockDoor();
@@ -78,6 +105,18 @@ namespace Ladeskab1
                     }
 
                     break;
+            }
+        }
+
+        private void DoorEventDetected(int state)
+        {
+            if (state == 1)
+            {
+                _state = LadeskabState.Locked;
+            }
+            else if (state == 2)
+            {
+                _state = LadeskabState.Available;
             }
         }
 

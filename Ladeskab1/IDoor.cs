@@ -19,6 +19,6 @@ namespace Ladeskab1
 
     public class DoorEventArgs : EventArgs
     {
-        public string code { get; set; }
+        public int code { get; set; }
     }
 }
