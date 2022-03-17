@@ -17,7 +17,28 @@ namespace Ladeskab1
         {
 
         }
-        
+
+        public void NoPhoneConnected()
+        {
+            
+        }
+        public void ShowFullyCharged()
+        {
+            Console.WriteLine("Telefonen er fuldt opladt");
+        }
+
+        public void ShowChargeOngoing()
+        {
+
+            Console.WriteLine("Opladning i gang");
+        }
+
+        public void ShowChargeError()
+        {
+            Console.WriteLine("Opladning fejl");
+            Console.WriteLine("Opladning stoppes");
+        }
+
         public void ShowMessage()
         {
             if (doorOpened == true)

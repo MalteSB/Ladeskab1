@@ -10,8 +10,9 @@ namespace Ladeskab1
             // Assemble your system here from all the classes
             IDoor door = new Door();
             IReader rfidReader = new RFID();
-            ChargeControl _chargeControl = new ChargeControl();
+            IDisplay display = new Display();
             UsbChargerSimulator _usbSim = new UsbChargerSimulator();
+            ChargeControl _chargeControl = new ChargeControl(_usbSim,display);
             StationControl _statControl = new StationControl(door, rfidReader, _chargeControl);
 
             bool finish = false;

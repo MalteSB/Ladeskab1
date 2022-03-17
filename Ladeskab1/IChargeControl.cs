@@ -12,5 +12,6 @@ namespace Ladeskab1
 
         void StartCharge();
         void StopCharge();
+
     }
 }

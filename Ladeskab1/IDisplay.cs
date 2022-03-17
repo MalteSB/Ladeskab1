@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace Ladeskab1
 {
-    interface IDisplay
+    public interface IDisplay
     {
         event EventHandler<DoorEventArgs> DisplayEvent;
 
         void ShowMessage();
+        void ShowChargeOngoing();
+        void ShowChargeError();
+        void ShowFullyCharged();
+        void NoPhoneConnected();
     }
 
     public class DisplayEventArgs : EventArgs

@@ -59,7 +59,6 @@ namespace Ladeskab1
 
                 case LadeskabState.Available:
                     // Check for ladeforbindelse
-                    _charger.Connected = true;
 
                     if (_charger.Connected)
                     {
