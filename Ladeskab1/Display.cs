@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Ladeskab1
@@ -15,12 +16,12 @@ namespace Ladeskab1
 
         public void SetLockerState()
         {
-
+            throw new NotImplementedException();
         }
 
         public void NoPhoneConnected()
         {
-            
+            throw new NotImplementedException();
         }
         public void ShowFullyCharged()
         {
@@ -29,7 +30,6 @@ namespace Ladeskab1
 
         public void ShowChargeOngoing()
         {
-
             Console.WriteLine("Opladning i gang");
         }
 
