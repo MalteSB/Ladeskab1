@@ -9,7 +9,6 @@ namespace Ladeskab1
     public class Door : IDoor
     {
         public event EventHandler<DoorEventArgs> DoorStateEvent;
-        private string thisRFID;
 
         public enum states 
         {
@@ -20,13 +19,11 @@ namespace Ladeskab1
         public void LockDoor()
         {
             OnDoorClose(new DoorEventArgs(){code = 1});
-            thisRFID = "Locked";
         }
 
         public void UnlockDoor()
         {
             OnDoorOpen(new DoorEventArgs() {code = 0});
-            thisRFID = "Unlocked";
         }
 
         public void OnDoorOpen(DoorEventArgs e)
