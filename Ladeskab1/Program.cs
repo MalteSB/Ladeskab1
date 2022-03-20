@@ -15,11 +15,16 @@ namespace Ladeskab1
             ChargeControl _chargeControl = new ChargeControl(_usbSim,display);
             StationControl _statControl = new StationControl(door, rfidReader, _chargeControl);
 
+            System.Console.WriteLine("Indtast E/e for at slukke programmet ");
+            System.Console.WriteLine("Indtast O/o for at åbne døren");
+            System.Console.WriteLine("Indtast C/c for at lukke døren");
+            System.Console.WriteLine("Indtast R/r Scan RFID ");
             bool finish = false;
             do
             {
                 string input;
-                System.Console.WriteLine("Indtast E, O, C, R: ");
+             
+                
                 input = Console.ReadLine();
                 if (string.IsNullOrEmpty(input)) continue;
 
@@ -32,11 +37,13 @@ namespace Ladeskab1
 
                     case 'o':
                     case 'O':
+                        Console.WriteLine("Døren er åben nu");
                         door.OnDoorOpen(new DoorEventArgs());
                         break;
 
                     case 'c':
                     case 'C':
+                        Console.WriteLine("Døren er lukket nu");
                         door.OnDoorClose(new DoorEventArgs());
                         break;
 

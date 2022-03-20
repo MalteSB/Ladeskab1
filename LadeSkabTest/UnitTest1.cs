@@ -1,5 +1,6 @@
 using Ladeskab1;
 using NUnit.Framework;
+using UsbSimulator;
 
 namespace LadeSkabTest
 {
@@ -9,6 +10,7 @@ namespace LadeSkabTest
         private RFID reader;
         private DoorEventArgs _receivedDoorEventArgs;
         private ReaderEventArgs _receivedReaderEventArgs;
+        private CurrentEventArgs _receivedUSBChargerEventArgs;
 
         [SetUp]
         public void Setup()
@@ -61,10 +63,21 @@ namespace LadeSkabTest
             Assert.That(_receivedReaderEventArgs.rfidCode,Is.EqualTo(code));
         }
 
-        [Test]
-        public void TestObserverDisplay()
+
+        [TestCase(10)]
+        [TestCase(20)]
+        [TestCase(30)]
+        public void TestObserverUSBCharger(double current)
         {
-            //ikke implementeret
+            
+            
+
+            Assert.That(_receivedUSBChargerEventArgs.Current, Is.EqualTo(current));
         }
+
+
+
+
+
     }
 }
