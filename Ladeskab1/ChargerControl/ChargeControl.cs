@@ -20,12 +20,23 @@ namespace Ladeskab1
             _simulator = simulator;
             _display = display;
             simulator.CurrentValueEvent += HandleCurrentEvent;
+            simulator.ConnectedEvent += HandleConnectionEvent;
         }
 
         public void HandleCurrentEvent(object sender, CurrentEventArgs e)
         {
             _current = e.Current;
             ChargerDetectedEvent(_current);
+        }
+
+        public void HandleConnectionEvent(object sender, ConnectedEventArgs e)
+        {
+            Connected = e.Connected;
+        }
+
+        public void SimulateUSBConnected(bool a)
+        {
+            _simulator.SimulateConnected(a);
         }
 
         public void ChargerDetectedEvent(double _current)

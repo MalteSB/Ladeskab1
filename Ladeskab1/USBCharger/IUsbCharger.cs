@@ -8,10 +8,16 @@ namespace UsbSimulator
         public double Current { set; get; }
     }
 
+    public class ConnectedEventArgs : EventArgs
+    {
+        public bool Connected { get; set; }
+    }
+
     public interface IUsbCharger
     {
         // Event triggered on new current value
         event EventHandler<CurrentEventArgs> CurrentValueEvent;
+        event EventHandler<ConnectedEventArgs> ConnectedEvent;
 
         // Direct access to the current current value
         double CurrentValue { get; }
@@ -23,6 +29,6 @@ namespace UsbSimulator
         void StartCharge();
         // Stop charging
         void StopCharge();
-        void SimulateConnected(bool c);
+        void SimulateConnected(bool a);
     }
 }

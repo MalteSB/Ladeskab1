@@ -13,5 +13,7 @@ namespace Ladeskab1
         void StartCharge();
         void StopCharge();
 
+        void SimulateUSBConnected(bool a);
+
     }
 }

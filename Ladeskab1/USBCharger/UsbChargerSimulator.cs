@@ -14,6 +14,7 @@ namespace UsbSimulator
         private const int CurrentTickInterval = 250; // ms
 
         public event EventHandler<CurrentEventArgs> CurrentValueEvent;
+        public event EventHandler<ConnectedEventArgs> ConnectedEvent;
 
         public double CurrentValue { get; private set; }
 
@@ -27,7 +28,7 @@ namespace UsbSimulator
         public UsbChargerSimulator()
         {
             CurrentValue = 0.0;
-            Connected = false;
+            Connected = true;
             _overload = false;
 
             _timer = new System.Timers.Timer();
@@ -65,6 +66,7 @@ namespace UsbSimulator
         public void SimulateConnected(bool connected)
         {
             Connected = connected;
+            OnNewConnectedStatus(connected);
         }
 
         public void SimulateOverload(bool overload)
@@ -112,6 +114,11 @@ namespace UsbSimulator
         private void OnNewCurrent()
         {
             CurrentValueEvent?.Invoke(this, new CurrentEventArgs() {Current = this.CurrentValue});
+        }
+
+        private void OnNewConnectedStatus(bool connection)
+        {
+            ConnectedEvent?.Invoke(this,new ConnectedEventArgs(){Connected = connection});
         }
     }
 }

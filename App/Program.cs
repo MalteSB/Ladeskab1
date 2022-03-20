@@ -19,7 +19,8 @@ namespace App
             System.Console.WriteLine("Indtast E/e for at slukke programmet ");
             System.Console.WriteLine("Indtast O/o for at åbne døren");
             System.Console.WriteLine("Indtast C/c for at lukke døren");
-            System.Console.WriteLine("Indtast S/s for at tilslut telefon");
+            System.Console.WriteLine("Indtast S/s for at tilslutte telefon");
+            System.Console.WriteLine("Indtast F/f for at frakoble telefon");
             System.Console.WriteLine("Indtast R/r Scan RFID ");
             bool finish = false;
             do
@@ -52,8 +53,14 @@ namespace App
                     case 's':
                     case 'S':
                         Console.WriteLine("Telefonen er tilslutet");
-                        _chargeControl.Connected =true;
-                       break;
+                        _chargeControl.SimulateUSBConnected(true);
+                        break;
+
+                    case 'f':
+                    case 'F':
+                        Console.WriteLine("Telefonen er frakoblet");
+                        _chargeControl.SimulateUSBConnected(false);
+                        break;
 
                     case 'r':
                     case 'R':
