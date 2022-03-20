@@ -35,8 +35,8 @@ namespace Ladeskab1
 
         public void ShowChargeError()
         {
-            Console.WriteLine("Opladning fejl");
-            Console.WriteLine("Opladning stoppes");
+            Console.WriteLine("Opladning fejl ==>> Opladning stoppes");
+         
         }
 
         public void ShowMessage()

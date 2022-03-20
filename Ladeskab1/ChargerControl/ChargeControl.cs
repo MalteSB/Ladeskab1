@@ -7,7 +7,7 @@ using UsbSimulator;
 
 namespace Ladeskab1
 {
-    class ChargeControl : IChargeControl
+    public class ChargeControl : IChargeControl
     {
         public bool Connected { get; set; }
         private IUsbCharger _simulator;
