@@ -12,8 +12,8 @@ namespace App
             IDoor door = new Door();
             IReader rfidReader = new RFID();
             IDisplay display = new Display();
-            UsbChargerSimulator _usbSim = new UsbChargerSimulator();
-            ChargeControl _chargeControl = new ChargeControl(_usbSim, display);
+            IUsbCharger _usbSim = new UsbChargerSimulator();
+            IChargeControl _chargeControl = new ChargeControl(_usbSim, display);
             StationControl _statControl = new StationControl(door, rfidReader, _chargeControl);
 
             System.Console.WriteLine("Indtast E/e for at slukke programmet ");
@@ -39,12 +39,14 @@ namespace App
                     case 'o':
                     case 'O':
                         Console.WriteLine("Døren er åben nu");
+                        Console.WriteLine("Tilslut telefon og luk døren");
                         door.OnDoorOpen(new DoorEventArgs());
                         break;
 
                     case 'c':
                     case 'C':
                         Console.WriteLine("Døren er lukket nu");
+                        Console.WriteLine("Scan din RFID");
                         door.OnDoorClose(new DoorEventArgs());
                         break;
 
