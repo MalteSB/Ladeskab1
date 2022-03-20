@@ -36,7 +36,6 @@ namespace App
                     case 'E':
                         finish = true;
                         break;
-
                     case 'o':
                     case 'O':
                         Console.WriteLine("Døren er åben nu");
@@ -53,8 +52,8 @@ namespace App
                     case 's':
                     case 'S':
                         Console.WriteLine("Telefonen er tilslutet");
-                        _usbSim.SimulateConnected(true);
-                        break;
+                        _chargeControl.Connected =true;
+                       break;
 
                     case 'r':
                     case 'R':

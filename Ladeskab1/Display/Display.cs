@@ -21,7 +21,7 @@ namespace Ladeskab1
 
         public void NoPhoneConnected()
         {
-            throw new NotImplementedException();
+            //Console.WriteLine("Din telefon er ikke ordentlig tilsluttet. Prøv igen.");
         }
         public void ShowFullyCharged()
         {

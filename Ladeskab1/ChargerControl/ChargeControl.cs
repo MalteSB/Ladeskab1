@@ -16,7 +16,7 @@ namespace Ladeskab1
 
         public ChargeControl(IUsbCharger simulator,IDisplay display)
         {
-            Connected = true;
+            Connected = false;
             _simulator = simulator;
             _display = display;
             simulator.CurrentValueEvent += HandleCurrentEvent;
