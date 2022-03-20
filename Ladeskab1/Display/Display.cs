@@ -9,20 +9,31 @@ namespace Ladeskab1
 {
     public class Display : IDisplay
     {
-        public event EventHandler<DoorEventArgs> DisplayEvent;
-        private bool doorOpened = false;
-        private bool isConnected;
-        private bool checkID;
-
-        public void SetLockerState()
+        public void PhoneConnectionError()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Telefon er ikke ordentlig tilsluttet");
         }
 
-        public void NoPhoneConnected()
+        public void ShowLockerLocked()
         {
-            //Console.WriteLine("Din telefon er ikke ordentlig tilsluttet. Prøv igen.");
+            Console.WriteLine("Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.");
         }
+
+        public void ShowNotConnected()
+        {
+            Console.WriteLine("Din telefon er ikke ordentlig tilsluttet. Prøv igen.");
+        }
+
+        public void ShowWrongRFID()
+        {
+            Console.WriteLine("Forkert RFID tag");
+        }
+
+        public void ShowTakePhone()
+        {
+            Console.WriteLine("Tag din telefon ud af skabet og luk døren");
+        }
+
         public void ShowFullyCharged()
         {
             Console.WriteLine("Telefonen er fuldt opladt");
@@ -37,37 +48,6 @@ namespace Ladeskab1
         {
             Console.WriteLine("Opladning fejl ==>> Opladning stoppes");
          
-        }
-
-        public void ShowMessage()
-        {
-            if (doorOpened == true)
-            {
-                Console.WriteLine("Tilslut telefon");
-            }
-            if (doorOpened == false)
-            {
-                Console.WriteLine("Indlæs RFID");
-            }
-            if (isConnected == false)
-            {
-                Console.WriteLine("Tilslutningsfejl");
-            }
-            if (isConnected == true && doorOpened == false)
-            {
-                Console.WriteLine("Ladeskab optaget");
-            }
-            if (checkID == false)
-            {
-                Console.WriteLine("RFID fejl");
-            }
-
-            if (checkID == true)
-            {
-                Console.WriteLine("Fjern telefon");
-            }
-
-
         }
     }
 }

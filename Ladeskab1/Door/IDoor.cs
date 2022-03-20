@@ -11,10 +11,10 @@ namespace Ladeskab1
         event EventHandler<DoorEventArgs> DoorStateEvent;
         void LockDoor();
         void UnlockDoor();
-        void OnDoorOpen(DoorEventArgs e);
+        void DoorOpen();
+        void DoorClosed();
 
-        void OnDoorClose(DoorEventArgs e);
-
+        void OnDoorAction(DoorEventArgs e);
     }
 
     public class DoorEventArgs : EventArgs

@@ -43,7 +43,7 @@ namespace Ladeskab1
         {
             if (_current == 0)
             {
-                _display.NoPhoneConnected();
+                _display.PhoneConnectionError();
                 _simulator.SimulateConnected(false);
             }
             else if (0 < _current && _current<=5)

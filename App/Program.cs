@@ -14,7 +14,7 @@ namespace App
             IDisplay display = new Display();
             IUsbCharger _usbSim = new UsbChargerSimulator();
             IChargeControl _chargeControl = new ChargeControl(_usbSim, display);
-            StationControl _statControl = new StationControl(door, rfidReader, _chargeControl);
+            StationControl _statControl = new StationControl(door, rfidReader, _chargeControl,display);
 
             System.Console.WriteLine("Indtast E/e for at slukke programmet ");
             System.Console.WriteLine("Indtast O/o for at åbne døren");
@@ -41,14 +41,14 @@ namespace App
                     case 'O':
                         Console.WriteLine("Døren er åben nu");
                         Console.WriteLine("Tilslut telefon og luk døren");
-                        door.OnDoorOpen(new DoorEventArgs());
+                        door.DoorOpen();
                         break;
 
                     case 'c':
                     case 'C':
                         Console.WriteLine("Døren er lukket nu");
                         Console.WriteLine("Scan din RFID");
-                        door.OnDoorClose(new DoorEventArgs());
+                        door.DoorClosed();
                         break;
                     case 's':
                     case 'S':
@@ -64,9 +64,21 @@ namespace App
 
                     case 'r':
                     case 'R':
-                        System.Console.WriteLine("Indtast RFID id: ");
-                        string idString = System.Console.ReadLine();
-                        int id = Convert.ToInt32(idString);
+                        int id = 0;
+                        while (id == 0)
+                        {
+                            System.Console.WriteLine("Indtast RFID id: ");
+                            string idString = System.Console.ReadLine();
+                            try
+                            {
+                                id = Convert.ToInt32(idString);
+                            }
+                            catch (FormatException e)
+                            {
+                                Console.WriteLine("Ugyldigt RFID-format");
+                            }
+                        }
+
                         rfidReader.Read(id);
                         break;
 

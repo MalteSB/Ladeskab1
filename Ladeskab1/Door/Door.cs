@@ -18,20 +18,25 @@ namespace Ladeskab1
 
         public void LockDoor()
         {
-            OnDoorClose(new DoorEventArgs(){code = 1});
+            OnDoorAction(new DoorEventArgs(){code = 1});
         }
 
         public void UnlockDoor()
         {
-            OnDoorOpen(new DoorEventArgs() {code = 0});
+            OnDoorAction(new DoorEventArgs() {code = 0});
         }
 
-        public void OnDoorOpen(DoorEventArgs e)
+        public void DoorOpen()
         {
-            DoorStateEvent?.Invoke(this,e);
+            OnDoorAction(new DoorEventArgs(){code = 2});
         }
 
-        public void OnDoorClose(DoorEventArgs e)
+        public void DoorClosed()
+        {
+            OnDoorAction(new DoorEventArgs(){code = 3});
+        }
+
+        public void OnDoorAction(DoorEventArgs e)
         {
             DoorStateEvent?.Invoke(this,e);
         }

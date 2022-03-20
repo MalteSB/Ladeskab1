@@ -8,17 +8,14 @@ namespace Ladeskab1
 {
     public interface IDisplay
     {
-        event EventHandler<DoorEventArgs> DisplayEvent;
-
-        void ShowMessage();
         void ShowChargeOngoing();
+        void PhoneConnectionError();
         void ShowChargeError();
         void ShowFullyCharged();
-        void NoPhoneConnected();
-    }
+        void ShowLockerLocked();
+        void ShowNotConnected();
+        void ShowWrongRFID();
+        void ShowTakePhone();
 
-    public class DisplayEventArgs : EventArgs
-    {
-        public string message { get; set; }
     }
 }
