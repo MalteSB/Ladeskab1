@@ -4,7 +4,7 @@ using UsbSimulator;
 
 namespace App
 {
-    class Program
+   class Program
     {
         static void Main(string[] args)
         {
@@ -19,6 +19,7 @@ namespace App
             System.Console.WriteLine("Indtast E/e for at slukke programmet ");
             System.Console.WriteLine("Indtast O/o for at åbne døren");
             System.Console.WriteLine("Indtast C/c for at lukke døren");
+            System.Console.WriteLine("Indtast S/s for at tilslut telefon");
             System.Console.WriteLine("Indtast R/r Scan RFID ");
             bool finish = false;
             do
@@ -48,6 +49,11 @@ namespace App
                         Console.WriteLine("Døren er lukket nu");
                         Console.WriteLine("Scan din RFID");
                         door.OnDoorClose(new DoorEventArgs());
+                        break;
+                    case 's':
+                    case 'S':
+                        Console.WriteLine("Telefonen er tilslutet");
+                        _usbSim.SimulateConnected(true);
                         break;
 
                     case 'r':
