@@ -82,15 +82,7 @@ namespace LadeSkabTest
 
 
 
-       [Test]
-       public void ShowMessage_PrintCorrectMessage()
-       {
-
-
-
-
-       }
-
+       
 
 
 
