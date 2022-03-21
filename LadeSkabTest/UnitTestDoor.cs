@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ladeskab1;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace LadeSkabTest
@@ -93,8 +94,16 @@ namespace LadeSkabTest
         [Test]
         public void TestDoorEventInvoked()
         {
-            _uut.OnDoorAction(new DoorEventArgs());
+            _uut.LockDoor();
 
+            Assert.That(_receivedDoorEventArgs,Is.Not.EqualTo(null));
+        }
+
+        [Test]
+        public void TestNoDoorEventInvoked()
+        {
+
+            Assert.That(_receivedDoorEventArgs, Is.EqualTo(null));
         }
 
 

@@ -11,12 +11,27 @@ namespace UsbSimulator.Test
     [TestFixture]
     public class TestUsbChargerSimulator
     {
-
         private UsbChargerSimulator _uut;
+        private bool Connected;
         [SetUp]
         public void Setup()
         {
             _uut = new UsbChargerSimulator();
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void TestConnectedObserver(bool tf)
+        {
+            _uut.ConnectedEvent += (o, args) =>
+            {
+                Connected = args.Connected;
+            };
+
+            _uut.SimulateConnected(tf);
+
+            Assert.That(Connected, Is.EqualTo(_uut.Connected));
+
         }
 
         [Test]
