@@ -68,6 +68,8 @@ namespace LadeSkabTest
             Assert.That(doorStateChanged, Is.EqualTo(iterations));
         }
 
+
+
         [TestCase(1, 1)]
         [TestCase(2, 0)]
         [TestCase(3, 3)]
