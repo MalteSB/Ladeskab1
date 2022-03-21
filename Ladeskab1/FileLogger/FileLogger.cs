@@ -7,40 +7,31 @@ using System.Threading.Tasks;
 
 namespace Ladeskab1
 {
-    class FileLogger : ILogger
+    public class FileLogger : ILogger
     {
-        private string fileName = @"";
+        private string logFile = "logfile.txt";
         private StreamWriter writer;
         private FileStream stream;
 
         public FileLogger()
         {
-            writer = new StreamWriter(fileName);
         }
 
-        public void log()
+        public void log(int i, int id)
         {
-            // Create a FileStream with mode CreateNew  
-            if (File.Exists(fileName)==false)
+            if (i == 1)
             {
-                stream = new FileStream(fileName, FileMode.CreateNew);
-            }
-            else
-            {
-                stream = new FileStream(fileName, FileMode.Append);
-            }
-            // Create a StreamWriter from FileStream  
-            try
-            {
-                using (StreamWriter writer = new StreamWriter(stream))
+                using (var writer = File.AppendText(logFile))
                 {
-                    writer.WriteLine("Hello StreamWriter");
+                    writer.WriteLine(DateTime.Now + ": Skab låst med RFID: {0}", id);
                 }
             }
-            catch (Exception e)
+            else if (i == 2)
             {
-                Console.WriteLine(e);
-                throw;
+                using (var writer = File.AppendText(logFile))
+                {
+                    writer.WriteLine(DateTime.Now + ": Skab låst op med RFID: {0}", id);
+                }
             }
         }
     }

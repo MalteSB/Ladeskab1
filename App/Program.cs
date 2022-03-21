@@ -13,8 +13,9 @@ namespace App
             IReader rfidReader = new RFID();
             IDisplay display = new Display();
             IUsbCharger _usbSim = new UsbChargerSimulator();
+            ILogger _logger = new FileLogger();
             IChargeControl _chargeControl = new ChargeControl(_usbSim, display);
-            StationControl _statControl = new StationControl(door, rfidReader, _chargeControl,display);
+            StationControl _statControl = new StationControl(door, rfidReader, _chargeControl,display,_logger);
 
             System.Console.WriteLine("Indtast E/e for at slukke programmet ");
             System.Console.WriteLine("Indtast O/o for at åbne døren");

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Ladeskab1
 {
-    interface ILogger
+    public interface ILogger
     {
-        void log();
+        void log(int i,int id);
     }
 }
