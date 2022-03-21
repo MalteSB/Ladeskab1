@@ -37,26 +37,11 @@ namespace LadeSkabTest
                     _receivedDoorEventArgs = args;
                 };
 
-            reader.ReadStateEvent +=
-                (o, args) =>
-                {
-                    _receivedReaderEventArgs = args;
-                };
         }
 
      
 
-        [TestCase(23)]
-        [TestCase(10)]
-        [TestCase(5)]
-        public void TestObserverReader(int code)
-        {
-            reader.Read(code);
-            
-            Assert.That(_receivedReaderEventArgs.rfidCode,Is.EqualTo(code));
-        }
-
-        
+    
 
       
        
