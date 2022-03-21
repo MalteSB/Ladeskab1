@@ -21,6 +21,12 @@ namespace LadeSkabTest
         {
             _receivedDoorEventArgs = null;
             _uut = new Door();
+
+            _uut.DoorStateEvent +=
+                (o, args) =>
+                {
+                    _receivedDoorEventArgs = args;
+                };
         }
 
 
@@ -63,6 +69,7 @@ namespace LadeSkabTest
 
         [TestCase(1, 1)]
         [TestCase(2, 0)]
+        [TestCase(3, 3)]
         public void TestObserverDoor(int scenario, int state)
         {
             if (scenario == 1)
@@ -73,8 +80,19 @@ namespace LadeSkabTest
             {
                 _uut.UnlockDoor();
             }
+            else if (scenario == 3)
+            {
+                _uut.DoorClosed();
+            }
 
             Assert.That(_receivedDoorEventArgs.code, Is.EqualTo(state));
+        }
+
+        [Test]
+        public void TestDoorEventInvoked()
+        {
+            _uut.OnDoorAction(new DoorEventArgs());
+
         }
 
 

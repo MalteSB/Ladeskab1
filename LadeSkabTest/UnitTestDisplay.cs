@@ -20,32 +20,6 @@ namespace LadeSkabTest
            _uut = new Display();
        }
 
-       [Test]
-       public void TestSetLockerDisplay()
-       {
-           try
-           {
-               _uut.SetLockerState();
-           }
-           catch (Exception e)
-           {
-               Assert.That(e, Is.TypeOf(typeof(NotImplementedException)));
-           }
-       }
-
-       [Test]
-       public void TestNoPhoneDisplay()
-       {
-           try
-           {
-               _uut.NoPhoneConnected();
-           }
-           catch (Exception e)
-           {
-               Assert.That(e, Is.TypeOf(typeof(NotImplementedException)));
-           }
-       }
-
 
 
        [Test]
