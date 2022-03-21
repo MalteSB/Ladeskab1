@@ -17,6 +17,8 @@ namespace Ladeskab1
         {
         }
 
+        public string Path { get; set; }
+
         public void log(int i, int id)
         {
             if (i == 1)
