@@ -26,10 +26,7 @@ namespace LadeSkabTest
         }
 
         [Test]
-        {
-
-
-        }
+        
 
 
 
