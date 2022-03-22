@@ -29,6 +29,7 @@ namespace LadeSkabTest
             _uut = new FileLogger(fakeFilewriter,fakeTimeProvider);
         }
 
+
         [TestCase(1, 55)]
         [TestCase(1, -10)]
         [TestCase(1, 1000)]
