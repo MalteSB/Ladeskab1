@@ -6,28 +6,30 @@ using System.Text;
 using System.Threading.Tasks;
 using Ladeskab1;
 using System.IO;
+using NSubstitute;
 
 namespace LadeSkabTest
 {
     public class UnitTestFileLogger
     {
 
-
+        private IStreamWriter fakeFilewriter;
+        private ITimeProvider fakeTimeProvider;
         private FileLogger _uut;
 
         [SetUp]
         public void Setup()
         {
-            _uut = new FileLogger();
+            fakeFilewriter = Substitute.For<IStreamWriter>();
+            fakeTimeProvider = Substitute.For<ITimeProvider>();
+            _uut = new FileLogger(fakeFilewriter,fakeTimeProvider);
         }
 
         [Test]
-        public void ctor_Log_Created()
         {
-            Assert.That(File.Exists(_uut.Path), Is.True);
+
+
         }
-
-
 
 
 

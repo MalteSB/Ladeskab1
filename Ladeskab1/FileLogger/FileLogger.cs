@@ -1,40 +1,40 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Ladeskab1
 {
     public class FileLogger : ILogger
     {
         private string logFile = "logfile.txt";
-        private StreamWriter writer;
+        private IStreamWriter writer;
+        private ITimeProvider time;
         private FileStream stream;
 
-        public FileLogger()
+        public FileLogger(IStreamWriter writer,ITimeProvider time)
         {
+            this.writer = writer;
+            this.time = time;
         }
-
-        public string Path { get; set; }
+       
 
         public void log(int i, int id)
         {
             if (i == 1)
             {
-                using (var writer = File.AppendText(logFile))
-                {
-                    writer.WriteLine(DateTime.Now + ": Skab låst med RFID: {0}", id);
-                }
+                writer.WriteLineToFile(time.getTime()+" Skab låst med RFID:"+id);
             }
             else if (i == 2)
             {
-                using (var writer = File.AppendText(logFile))
-                {
-                    writer.WriteLine(DateTime.Now + ": Skab låst op med RFID: {0}", id);
-                }
+                writer.WriteLineToFile(time.getTime() + " Skab låst op med RFID:"+ id);
+                
             }
+
         }
     }
 }
