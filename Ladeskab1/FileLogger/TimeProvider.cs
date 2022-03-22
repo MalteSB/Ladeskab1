@@ -8,6 +8,7 @@ namespace Ladeskab1
 {
     public class TimeProvider : ITimeProvider
     {
+        
         public string getTime()
         {
             return Convert.ToString(DateTime.Now);
