@@ -16,6 +16,7 @@ namespace LadeSkabTest
         private IDoor _door;
         private IChargeControl _chargeControl;
         private IReader _reader;
+        private ILogger _logger;
         private StationControl _uut;
 
 
@@ -26,19 +27,21 @@ namespace LadeSkabTest
             _door = Substitute.For<IDoor>();
             _chargeControl = Substitute.For<IChargeControl>();
             _reader = Substitute.For<IReader>();
-            _uut = new StationControl(_door, _reader, _chargeControl, _display);
+            _logger = Substitute.For<ILogger>();
+            _uut = new StationControl(_door, _reader, _chargeControl, _display,_logger);
         }
 
         [Test]
         public void TestHandleDoorEvent()
         {
-
+            _door.LockDoor();
+            
         }
 
         [Test]
         public void TestRfidDetected()
         {
-
+            
         }
 
 
