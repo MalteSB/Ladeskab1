@@ -23,13 +23,13 @@ namespace Ladeskab1
             simulator.ConnectedEvent += HandleConnectionEvent;
         }
 
-        public void HandleCurrentEvent(object sender, CurrentEventArgs e)
+        private void HandleCurrentEvent(object sender, CurrentEventArgs e)
         {
             _current = e.Current;
             ChargerDetectedEvent(_current);
         }
 
-        public void HandleConnectionEvent(object sender, ConnectedEventArgs e)
+        private void HandleConnectionEvent(object sender, ConnectedEventArgs e)
         {
             Connected = e.Connected;
         }
@@ -39,7 +39,7 @@ namespace Ladeskab1
             _simulator.SimulateConnected(a);
         }
 
-        public void ChargerDetectedEvent(double _current)
+        private void ChargerDetectedEvent(double _current)
         {
             if (_current == 0)
             {
