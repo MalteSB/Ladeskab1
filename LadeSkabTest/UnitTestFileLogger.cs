@@ -21,9 +21,11 @@ namespace LadeSkabTest
             _uut = new FileLogger();
         }
 
-        [Test]
-        public void ctor_Log_Created()
+        [TestCase(1,2)]
+        [TestCase(2,2)]
+        public void ctor_Log_Created(int i,int id)
         {
+            _uut.log(i,id);
             Assert.That(File.Exists(_uut.Path), Is.True);
         }
 

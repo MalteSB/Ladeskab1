@@ -13,11 +13,13 @@ namespace Ladeskab1
         private StreamWriter writer;
         private FileStream stream;
 
+        public string Path { get; set; }
         public FileLogger()
         {
+            Path = logFile;
         }
 
-        public string Path { get; set; }
+        
 
         public void log(int i, int id)
         {
