@@ -29,8 +29,13 @@ namespace LadeSkabTest
             Assert.That(File.Exists(_uut.Path), Is.True);
         }
 
-
-
+        [TestCase(1, 55)]
+        public void Locked_Logger_Test(int i,int id)
+        {
+            _uut.log(i,id);
+            string[] log = File.ReadAllLines(_uut.Path);
+            Assert.That(log.Contains(": Skab låst med RFID:"));
+        }
 
 
 
