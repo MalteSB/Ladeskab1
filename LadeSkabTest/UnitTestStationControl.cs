@@ -36,7 +36,6 @@ namespace LadeSkabTest
         public void TestHandleDoorEvent()
         {
             _door.LockDoor();
-            
         }
 
         [Test]
