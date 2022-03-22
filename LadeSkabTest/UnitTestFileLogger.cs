@@ -38,6 +38,8 @@ namespace LadeSkabTest
             _uut.log(i,id);
             Assert.That(File.Exists(writer.Path),Is.True);
         }
+
+
         [TestCase(1, 55)]
         [TestCase(1, -10)]
         [TestCase(1, 1000)]
