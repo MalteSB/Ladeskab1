@@ -49,6 +49,26 @@ namespace LadeSkabTest
             Assert.That(doorStateChanged, Is.EqualTo(iterations));
         }
 
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(3)]
+        public void DoorEventRaisedClose(int iterations)
+        {
+            int doorStateChanged = 0;
+            _uut.DoorStateEvent += (o, args) => doorStateChanged++;
+
+            int i = 0;
+            while (i < iterations)
+            {
+                _uut.LockDoor();
+                i++;
+            }
+
+            Assert.That(doorStateChanged, Is.EqualTo(iterations));
+        }
+
+
+
 
         [TestCase(1)]
         [TestCase(2)]
