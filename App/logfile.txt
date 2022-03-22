@@ -1,0 +1,7 @@
+21-03-2022 09:54:51: Skab låst med RFID: 12
+21-03-2022 09:55:50: Skab låst med RFID: 7623
+21-03-2022 09:55:56: Skab låst op med RFID: 7623
+21-03-2022 12:03:56: Skab låst med RFID: 13
+21-03-2022 12:04:00: Skab låst op med RFID: 13
+22-03-2022 09:29:27: Skab låst med RFID: 123
+22-03-2022 09:29:32: Skab låst op med RFID: 123

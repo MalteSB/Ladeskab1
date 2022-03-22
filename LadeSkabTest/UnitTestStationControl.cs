@@ -28,6 +28,7 @@ namespace LadeSkabTest
             _chargeControl = Substitute.For<IChargeControl>();
             _reader = Substitute.For<IReader>();
             _logger = Substitute.For<ILogger>();
+
             _uut = new StationControl(_door, _reader, _chargeControl, _display,_logger);
         }
 
