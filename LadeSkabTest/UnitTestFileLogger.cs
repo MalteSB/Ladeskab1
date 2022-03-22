@@ -25,13 +25,28 @@ namespace LadeSkabTest
             _uut = new FileLogger(fakeFilewriter,fakeTimeProvider);
         }
 
-        [Test]
-        
+        [TestCase(1, 55)]
+        [TestCase(1, -10)]
+        [TestCase(1, 1000)]
+        public void Test_Låst_CheckFile(int i,int id)
+        {
+            fakeTimeProvider.getTime().Returns("22-3-2022");
+            _uut.log(i,id);
+            fakeFilewriter.Received(1).WriteLineToFile("22-3-2022 Skab låst med RFID:"+id);
+
+        }
 
 
+        [TestCase(2, 50)]
+        [TestCase(2, -10)]
+        [TestCase(2, 125)]
+        public void Test_LåstOp_CheckFile(int i, int id)
+        {
+            fakeTimeProvider.getTime().Returns("22-3-2022");
+            _uut.log(i, id);
+            fakeFilewriter.Received(1).WriteLineToFile("22-3-2022 Skab låst op med RFID:" + id);
 
-
-
+        }
 
     }
 }

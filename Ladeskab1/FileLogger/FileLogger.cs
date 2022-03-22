@@ -31,7 +31,7 @@ namespace Ladeskab1
             }
             else if (i == 2)
             {
-                writer.WriteLineToFile(time.getTime() + " Skab låst op med RFID:"+ id);
+                writer.WriteLineToFile(time.getTime()+ " Skab låst op med RFID:"+ id);
                 
             }
 
