@@ -8,7 +8,7 @@ namespace Ladeskab1
 {
    public interface ITimeProvider
    {
-
+        public string DT { get; set; }
        string getTime();
 
    }

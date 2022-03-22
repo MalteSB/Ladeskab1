@@ -20,10 +20,12 @@ namespace LadeSkabTest
         private IStreamWriter fakeFilewriter;
         private ITimeProvider fakeTimeProvider;
         private FileLogger _uut;
+        private Writer writer;
 
         [SetUp]
         public void Setup()
         {
+            writer = new Writer();
             fakeFilewriter = Substitute.For<IStreamWriter>();
             fakeTimeProvider = Substitute.For<ITimeProvider>();
             _uut = new FileLogger(fakeFilewriter,fakeTimeProvider);
