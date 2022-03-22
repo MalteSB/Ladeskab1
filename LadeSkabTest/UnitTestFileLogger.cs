@@ -10,7 +10,6 @@ using System.IO.Enumeration;
 using System.Reflection.Metadata;
 using NSubstitute;
 using NUnit;
-using NSubstitute;
 
 namespace LadeSkabTest
 {

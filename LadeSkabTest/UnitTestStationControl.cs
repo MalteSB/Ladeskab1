@@ -38,10 +38,13 @@ namespace LadeSkabTest
             _door.LockDoor();
         }
 
-        [Test]
-        public void TestRfidDetected()
+        [TestCase(1,8)]
+        public void TestRfidDetected(int Antalkald,int code)
         {
-            
+            _reader.Read(code);
+
+
+            _uut.Received(1);
         }
 
 
