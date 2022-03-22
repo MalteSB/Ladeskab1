@@ -6,13 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Ladeskab1;
 using System.IO;
+using System.IO.Enumeration;
+using System.Reflection.Metadata;
+using NSubstitute;
+using NUnit;
 
 namespace LadeSkabTest
 {
     public class UnitTestFileLogger
     {
-
-
         private FileLogger _uut;
 
         [SetUp]
@@ -24,6 +26,7 @@ namespace LadeSkabTest
         [Test]
         public void ctor_Log_Created()
         {
+            _uut.log();
             Assert.That(File.Exists(_uut.Path), Is.True);
         }
 

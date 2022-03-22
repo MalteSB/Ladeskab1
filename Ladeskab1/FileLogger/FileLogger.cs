@@ -9,15 +9,16 @@ namespace Ladeskab1
 {
     public class FileLogger : ILogger
     {
-        private string logFile = "logfile.txt";
+        private string logFile = @"logfile.txt";
         private StreamWriter writer;
         private FileStream stream;
 
+        public string Path { get; set; }
+
         public FileLogger()
         {
+            Path = logFile;
         }
-
-        public string Path { get; set; }
 
         public void log(int i, int id)
         {
