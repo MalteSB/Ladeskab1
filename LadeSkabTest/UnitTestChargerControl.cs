@@ -11,7 +11,7 @@ namespace LadeSkabTest
     class UnitTestChargerControl
     {
 
-        private ChargeControl _uut;
+        private IChargeControl _uut;
 
 
         [SetUp]

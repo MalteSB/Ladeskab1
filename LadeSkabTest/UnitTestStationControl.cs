@@ -35,13 +35,14 @@ namespace LadeSkabTest
         [Test]
         public void TestHandleDoorEvent()
         {
-
+            _door.LockDoor();
+            
         }
 
         [Test]
         public void TestRfidDetected()
         {
-
+            
         }
 
 

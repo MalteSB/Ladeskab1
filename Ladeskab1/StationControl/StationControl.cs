@@ -40,7 +40,6 @@ namespace Ladeskab1
             _reader = reader;
             _door.DoorStateEvent += HandleDoorStateEvent;
             _reader.ReadStateEvent += HandleRFIDStateEvent;
-            
         }
 
         private void HandleDoorStateEvent(object sender, DoorEventArgs e)
