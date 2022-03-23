@@ -56,7 +56,21 @@ namespace LadeSkabTest
             _chargerSim.Received(Antalkald).StopCharge();
         }
 
+        [TestCase(true)]
+        [TestCase(false)]
+        public void TestSimulateConnected(bool tf)
+        {
+            _uut.SimulateUSBConnected(tf);
+            _chargerSim.Received(1).SimulateConnected(tf);
+        }
 
+        [Test]
+        public void TestCurrentRecieved()
+        {
+            _chargerSim.StartCharge();
+            _display.Received();
+            _chargerSim.Received();
+        }
 
 
 

@@ -36,15 +36,34 @@ namespace LadeSkabTest
         public void TestHandleDoorEvent()
         {
             _door.LockDoor();
+
         }
 
-        [TestCase(1,8)]
-        public void TestRfidDetected(int Antalkald,int code)
+        [TestCase(1,1)]
+        [TestCase(2,300)]
+        [TestCase(5,3050)]
+        public void TestRfidDetected(int iterations,int code)
         {
-            _reader.Read(code);
+            for (int i = 0; i < iterations; i++)
+            {
+                _reader.Read(code);
+            }
 
+            _display.Received(iterations);
+        }
 
-            _uut.Received(1);
+        [TestCase(1, 1)]
+        [TestCase(2, 300)]
+        [TestCase(5, 3050)]
+        public void TestRfidDetectedChargerConnected(int iterations, int code)
+        {
+            _chargeControl.SimulateUSBConnected(true);
+            for (int i = 0; i < iterations; i++)
+            {
+                _reader.Read(code);
+            }
+
+            _display.Received(iterations);
         }
 
 
