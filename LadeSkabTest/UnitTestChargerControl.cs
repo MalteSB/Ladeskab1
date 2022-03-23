@@ -75,9 +75,12 @@ namespace LadeSkabTest
             _chargerSim.Received();
         }
 
+        [TestCase(-1)]
         [TestCase(0)]
-        [TestCase(5)]
-        [TestCase(254)]
+        [TestCase(4)]
+        [TestCase(6)]
+        [TestCase(499)]
+        [TestCase(501)]
         public void TestHandleCurrentEvent(double thisCurrent)
         {
             _chargerSim.CurrentValueEvent += Raise.EventWith(new CurrentEventArgs {Current = thisCurrent});
