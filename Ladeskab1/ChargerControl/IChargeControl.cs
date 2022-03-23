@@ -9,6 +9,7 @@ namespace Ladeskab1
     public interface IChargeControl
     {
         bool Connected { get; set; }
+        double _current { get; set; }
 
         void StartCharge();
         void StopCharge();

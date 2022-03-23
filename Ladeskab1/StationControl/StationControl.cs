@@ -25,8 +25,8 @@ namespace Ladeskab1
         private IDisplay _display;
         private IReader _reader;
         private ILogger _logger;
-        private int _currentString;
-        private int _currentRFIDcode;
+        public int _currentString { get; private set; }
+        public int _currentRFIDcode { get; private set; }
 
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 

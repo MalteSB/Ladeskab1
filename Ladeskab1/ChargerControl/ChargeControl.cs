@@ -12,7 +12,7 @@ namespace Ladeskab1
         public bool Connected { get; set; }
         private IUsbCharger _simulator;
         private IDisplay _display;
-        private double _current;
+        public double _current { get; set; }
 
         public ChargeControl(IUsbCharger simulator,IDisplay display)
         {

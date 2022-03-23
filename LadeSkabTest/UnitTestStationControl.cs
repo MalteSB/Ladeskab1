@@ -82,6 +82,17 @@ namespace LadeSkabTest
             _display.Received(iterations);
         }
 
+        [TestCase(0)]
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(3)]
+        public void TestHandleDoorStateEvent(int thisCode)
+        {
+            _door.DoorStateEvent += Raise.EventWith(new DoorEventArgs { code = thisCode});
+
+
+            Assert.That(_uut._currentString, Is.EqualTo(thisCode));
+        }
 
 
 
