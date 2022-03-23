@@ -14,10 +14,9 @@ namespace Ladeskab1
        
 
 
-        public Writer(String filname)
+        public Writer()
         {
-            logFile = filname;
-            Path = Directory.GetCurrentDirectory() + @"\"+logFile;
+            
         }
 
         public void WriteLineToFile(string line)
