@@ -26,11 +26,16 @@ namespace LadeSkabTest
         [TestCase(1, 24)]
         public void TestWriteLineToFile(int i, int e)
         {
-            
+
         }
 
-     
 
+        [TestCase(1, 20)]
+        public void Ctor_log_Created(int i, int id)
+        {
+            _logger.log(i,id);
+            Assert.That(File.Exists(_uut.Path),Is.True);
+        }
 
 
     }
