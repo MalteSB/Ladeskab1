@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Ladeskab1;
@@ -109,6 +110,54 @@ namespace LadeSkabTest
 
         }
 
+        [TestCase(1,1)]
+        [TestCase(1,12)]
+        [TestCase(1,2)]
+        [TestCase(1,3)]
+        public void TestRFID_Detected_Doorlock(int thisCode,int thisrfidCode)
+        {
+            _door.LockDoor();
+            _uut._oldId = thisrfidCode;
+
+            _door.DoorStateEvent += Raise.EventWith(new DoorEventArgs() { code = thisCode });
+            _reader.ReadStateEvent += Raise.EventWith(new ReaderEventArgs() { rfidCode = thisrfidCode });
+            _door.Received(1).UnlockDoor();
+            _chargeControl.Received(1).StopCharge();
+            _logger.Received(1);
+            _display.Received(1).ShowTakePhone();
+
+        }
+
+        [TestCase(1,1)]
+        [TestCase(12,1)]
+        [TestCase(2,1)]
+        [TestCase(3,1)]
+        public void TestRFID_Detected_ID_not_Correct(int thisrfidCode,int thisCode)
+        {
+            _door.LockDoor();
+            _uut._oldId = thisrfidCode+1;
+
+            _door.DoorStateEvent += Raise.EventWith(new DoorEventArgs() { code = thisCode });
+            _reader.ReadStateEvent += Raise.EventWith(new ReaderEventArgs() { rfidCode = thisrfidCode });
+           
+            _display.Received(1).ShowWrongRFID();
+
+        }
+
+        [TestCase(2)]
+        public void TestRFID_Detected_DoorOpen(int thisCode)
+        {
+            _door.LockDoor();
+           
+            _door.DoorStateEvent += Raise.EventWith(new DoorEventArgs() { code = thisCode });
+
+            _door.Received(0);
+            _chargeControl.Received(0);
+            _logger.Received(0);
+            _display.Received(0);
+
+        }
+
 
         [TestCase(0)]
         [TestCase(1)]
@@ -120,12 +169,6 @@ namespace LadeSkabTest
 
             Assert.That(_uut._currentRFIDcode, Is.EqualTo(thisrfidCode));
         }
-
-
-
-
-
-
 
 
     }
