@@ -9,7 +9,7 @@ namespace Ladeskab1
 {
     public class Writer : IStreamWriter
     {
-        private string logFile;
+        private string logFile ="logfile.txt";
         public string Path { get; set; }
        
 

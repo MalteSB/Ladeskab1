@@ -14,7 +14,7 @@ namespace App
             IDisplay display = new Display();
             IUsbCharger _usbSim = new UsbChargerSimulator();
             ITimeProvider _time = new TimeProvider();
-            IStreamWriter _writer = new Writer();
+            IStreamWriter _writer = new Writer("logfile.txt");
             ILogger _logger = new FileLogger(_writer,_time);
             IChargeControl _chargeControl = new ChargeControl(_usbSim, display);
             StationControl _statControl = new StationControl(door, rfidReader, _chargeControl,display,_logger);
