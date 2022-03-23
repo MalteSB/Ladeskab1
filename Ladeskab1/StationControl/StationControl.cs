@@ -54,6 +54,7 @@ namespace Ladeskab1
             RfidDetected(e.rfidCode);
         }
 
+
         // Eksempel på event handler for eventet "RFID Detected" fra tilstandsdiagrammet for klassen
         private void RfidDetected(int id)
         {
