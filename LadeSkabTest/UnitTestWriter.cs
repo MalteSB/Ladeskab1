@@ -33,7 +33,7 @@ namespace LadeSkabTest
         [TestCase(1, 20)]
         public void Ctor_log_Created(int i, int id)
         {
-            Assert.That(File.Exists(_uut.Path),Is.True);
+            Assert.That(File.Exists(_uut.Path),Is.False);
         }
 
 
