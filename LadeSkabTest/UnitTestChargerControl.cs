@@ -87,15 +87,6 @@ namespace LadeSkabTest
             };
         }
 
-        [Test]
-        public void ChargerDetectedCurrentZero()
-        {
-            double thisCurrent = 0;
-            CurrentValueEvent.Invoke(_chargerSim,new CurrentEventArgs(){Current = thisCurrent});
-
-            _display.Received().PhoneConnectionError();
-            _chargerSim.Received().SimulateConnected(false);
-        }
 
 
 
