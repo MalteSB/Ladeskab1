@@ -94,6 +94,16 @@ namespace LadeSkabTest
         }
 
 
+        [TestCase(0)]
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(3)]
+        public void TestHandleRFIDStateEvent(int thisrfidCode)
+        {
+            _reader.ReadStateEvent += Raise.EventWith(new ReaderEventArgs() { rfidCode = thisrfidCode });
+
+            Assert.That(_uut._currentRFIDcode, Is.EqualTo(thisrfidCode));
+        }
 
 
 
