@@ -90,7 +90,6 @@ namespace LadeSkabTest
         {
             _door.DoorStateEvent += Raise.EventWith(new DoorEventArgs { code = thisCode});
 
-
             Assert.That(_uut._currentString, Is.EqualTo(thisCode));
         }
 
