@@ -93,13 +93,19 @@ namespace LadeSkabTest
             Assert.That(_uut._currentString, Is.EqualTo(thisCode));
         }
 
+        [TestCase(0)]
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(3)]
         public void TestRFID_Detected_ChargerConnected(int thisrfidCode)
         {
             _chargeControl.Connected = true;
 
             _reader.ReadStateEvent += Raise.EventWith(new ReaderEventArgs() { rfidCode = thisrfidCode });
 
-            Assert.That(_uut._currentRFIDcode, Is.EqualTo(thisrfidCode));
+           _door.Received(1).LockDoor();
+           _chargeControl.Received(1).StartCharge();
+           _logger.Received(1);
 
         }
 
