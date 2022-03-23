@@ -75,17 +75,19 @@ namespace LadeSkabTest
             _chargerSim.Received();
         }
 
-        [Test]
-        public void TestCurrentEventHandle()
+        [TestCase(0)]
+        [TestCase(5)]
+        [TestCase(254)]
+        public void TestHandleCurrentEvent(double thisCurrent)
         {
-            CurrentEventArgs thisCurrent = new CurrentEventArgs();
-            double lastValue = 0;
+            _chargerSim.CurrentValueEvent += Raise.EventWith(new CurrentEventArgs {Current = thisCurrent});
 
-            _chargerSim.CurrentValueEvent += (o, args) =>
-            {
-                lastValue = args.Current;
-            };
+
+            Assert.That(_uut._current,Is.EqualTo(thisCurrent));
         }
+
+
+
 
 
 
