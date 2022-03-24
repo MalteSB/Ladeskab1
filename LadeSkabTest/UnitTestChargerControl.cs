@@ -14,7 +14,7 @@ namespace LadeSkabTest
 {
     class UnitTestChargerControl
     {
-        public event EventHandler<CurrentEventArgs> CurrentValueEvent;
+        
         private IDisplay _display;
         private IUsbCharger _chargerSim;
         private IChargeControl _uut;
@@ -26,7 +26,7 @@ namespace LadeSkabTest
             _chargerSim = Substitute.For<IUsbCharger>();
             _display = Substitute.For<IDisplay>();
             _uut = new ChargeControl(_chargerSim, _display);
-            _chargerSim.CurrentValueEvent += this.CurrentValueEvent;
+            
         }
 
 
@@ -91,7 +91,14 @@ namespace LadeSkabTest
 
 
 
+        [TestCase(true)]
+        [TestCase(false)]
+        public void TestHandleConnectionEvent(bool thisConnected)
+        {
+            _chargerSim.ConnectedEvent += Raise.EventWith(new ConnectedEventArgs() { Connected = thisConnected });
 
+            Assert.That(_uut.Connected, Is.EqualTo(thisConnected));
+        }
 
 
 
@@ -100,7 +107,5 @@ namespace LadeSkabTest
 
 
     }
-
-
 
 }

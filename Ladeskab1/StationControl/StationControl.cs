@@ -20,7 +20,7 @@ namespace Ladeskab1
         // Her mangler flere member variable
         private LadeskabState _state;
         private IChargeControl _charger;
-        private int _oldId;
+        public int _oldId;
         private IDoor _door;
         private IDisplay _display;
         private IReader _reader;
@@ -53,6 +53,7 @@ namespace Ladeskab1
             _currentRFIDcode = e.rfidCode;
             RfidDetected(e.rfidCode);
         }
+
 
         // Eksempel på event handler for eventet "RFID Detected" fra tilstandsdiagrammet for klassen
         private void RfidDetected(int id)
