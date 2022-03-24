@@ -75,18 +75,38 @@ namespace LadeSkabTest
             _chargerSim.Received();
         }
 
-        [TestCase(-1)]
-        [TestCase(0)]
-        [TestCase(4)]
-        [TestCase(6)]
-        [TestCase(499)]
-        [TestCase(501)]
-        public void TestHandleCurrentEvent(double thisCurrent)
+        [TestCase(-1,true,4)]
+        [TestCase(0,false,1)]
+        [TestCase(1,true,2)]
+        [TestCase(4,true,2)]
+        [TestCase(6,true,3)]
+        [TestCase(499,true,3)]
+        [TestCase(501,true,4)]
+        public void TestHandleCurrentEvent(double thisCurrent,bool stim,int scenario)
         {
             _chargerSim.CurrentValueEvent += Raise.EventWith(new CurrentEventArgs {Current = thisCurrent});
 
+            if (scenario == 2)
+            {
+                _display.Received(1).ShowFullyCharged();
+                _chargerSim.Received(1).SimulateConnected(stim);
+            }
+            else if (scenario == 1)
+            {
+                _display.Received(1).PhoneConnectionError();
+                _chargerSim.Received(1).SimulateConnected(stim);
+            }
+            else if (scenario == 3)
+            {
+                _display.Received(1).ShowChargeOngoing();
+                _chargerSim.Received(1).SimulateConnected(stim);
+            }
+            else
+            {
+                _display.Received(1).ShowChargeError();
+                _chargerSim.Received(1).SimulateConnected(true);
+            }
 
-            Assert.That(_uut._current,Is.EqualTo(thisCurrent));
         }
 
 
