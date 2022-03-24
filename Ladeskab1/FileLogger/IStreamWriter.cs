@@ -9,7 +9,7 @@ namespace Ladeskab1
    public interface IStreamWriter
    {
        void WriteLineToFile(string line);
-       public string Path { get; set; }
+      
 
 
     }
