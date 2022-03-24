@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace LadeSkabTest
     class UnitTestWriter
     {
         private IStreamWriter _uut;
+        private string logFile = "logfile.txt";
 
         [SetUp]
         public void SetUp()
@@ -20,10 +22,25 @@ namespace LadeSkabTest
             _uut = new Writer();
         }
 
-        [TestCase(1, 24)]
-        public void TestWriteLineToFile(int i, int e)
+        [TestCase("test")]
+        public void TestWriteLineToFile(string gemmes)
         {
+            if (File.Exists(logFile))
+            {
+                File.Delete(logFile);
+            }
             
+
+            _uut.WriteLineToFile(gemmes);
+
+            string resultet;
+            using (StreamReader reader = new StreamReader(File.OpenRead(logFile)))
+            {
+                resultet = reader.ReadLine();
+
+            }
+            Assert.AreEqual(gemmes,resultet);
+
         }
 
        
