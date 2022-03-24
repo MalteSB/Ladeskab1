@@ -9,7 +9,6 @@ namespace Ladeskab1
     public class RFID : IReader
     {
         public event EventHandler<ReaderEventArgs> ReadStateEvent;
-        private bool continueBool = false;
 
         public void Read(int code)
         {
