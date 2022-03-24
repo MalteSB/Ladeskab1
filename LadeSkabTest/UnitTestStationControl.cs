@@ -160,22 +160,20 @@ namespace LadeSkabTest
         }
 
 
-
-        [TestCase(2)]
-        public void TestRFID_Detected_DoorOpen(int thisCode)
+        [TestCase(2,24)]
+        [TestCase(2, 300)]
+        [TestCase(2, 1)]
+        public void TestRFID_Detected_DoorOpen(int thisCode,int thisrfidCode)
         {
-            _door.LockDoor();
-
             _door.DoorStateEvent += Raise.EventWith(new DoorEventArgs() { code = thisCode });
+            _reader.ReadStateEvent += Raise.EventWith(new ReaderEventArgs() { rfidCode = thisrfidCode });
+            _door.DoorOpen();
 
-            _door.Received(0);
             _chargeControl.Received(0);
             _logger.Received(0);
             _display.Received(0);
 
         }
-
-
 
 
 

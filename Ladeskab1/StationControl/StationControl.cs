@@ -25,10 +25,9 @@ namespace Ladeskab1
         private IDisplay _display;
         private IReader _reader;
         private ILogger _logger;
-        public int _currentString { get; private set; }
-        public int _currentRFIDcode { get; private set; }
+        public int _currentString { get; private set; } //door
+        public int _currentRFIDcode { get; private set; } //rfid
 
-        private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
         // Her mangler constructor
         public StationControl(IDoor door, IReader reader,IChargeControl chargeControl,IDisplay display, ILogger logger)
