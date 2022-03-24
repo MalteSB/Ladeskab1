@@ -78,9 +78,11 @@ namespace LadeSkabTest
         [TestCase(-1,true,4)]
         [TestCase(0,false,1)]
         [TestCase(1,true,2)]
-        [TestCase(4,true,2)]
+        [TestCase(4, true, 2)]
+        [TestCase(5,true,2)]
         [TestCase(6,true,3)]
-        [TestCase(499,true,3)]
+        [TestCase(499, true, 3)]
+        [TestCase(500,true,3)]
         [TestCase(501,true,4)]
         public void TestHandleCurrentEvent(double thisCurrent,bool stim,int scenario)
         {
